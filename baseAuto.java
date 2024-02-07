@@ -7,23 +7,17 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-//import org.opencv.highgui.HighGui;
 import org.firstinspires.ftc.vision.VisionPortal;
-//import org.firstinspires.ftc.vision.Size;
 
 import android.sax.StartElementListener;
 import android.util.Size;
-//import com.acmerobotics.dashboard.FtcDashboard;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-//import org.openftc.easyopencv.
-//import org.openftc.easyopencv.OpenCvCameraFactory;
 
 
-//import
+
 @Autonomous
 public class baseAuto extends LinearOpMode {
 
-    //    private DistanceSensor dsensor;
     private DcMotor left_drive;
     private DcMotor right_drive;
     private DcMotor left_back;
@@ -39,12 +33,9 @@ public class baseAuto extends LinearOpMode {
     private Servo swivel;
     private Servo drone;
 
-    //    long time =System.nanoTime();
     ElapsedTime runtime = new ElapsedTime();//.startTime();
 
-    //    WebcamName webcam;
-//    private VisionProcessor ColorPipeline;
-//ColorPipelineB pipeline =new ColorPipelineB(telemetry);
+
     private PropDetector pipeline;
     private VisionPortal visionPortal;
 
@@ -52,15 +43,12 @@ public class baseAuto extends LinearOpMode {
 
     boolean pointOne = false;
 
-//    ColorPipeline ColorPipeline
 
-//baseAuto.ColorPipeline.location
 
     @Override
     public void runOpMode() {
 
 
-//        dsensor = hardwareMap.get(DistanceSensor.class, "dsensor");
 
         left_drive = hardwareMap.get(DcMotor.class, "left_drive");
         right_drive = hardwareMap.get(DcMotor.class, "right_drive");
@@ -88,14 +76,11 @@ public class baseAuto extends LinearOpMode {
 
         right_back.setDirection(DcMotor.Direction.REVERSE);
         right_drive.setDirection(DcMotor.Direction.REVERSE);
-//
-//
-//        left_back.setTargetPosition(0);
-//        right_back.setTargetPosition(0);
-//
+
+
         cap.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         cap2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//
+
         cap.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         cap2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -104,10 +89,10 @@ public class baseAuto extends LinearOpMode {
         right_drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         right_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-//        right_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//        right_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//        left_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//        left_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        right_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        right_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        left_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        left_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
         pipeline = new PropDetector();
@@ -161,17 +146,12 @@ public class baseAuto extends LinearOpMode {
         }
 //        webcam.stopStreaming();
 
-//        Top = hardwareMap.get(Servo.class, "Top");
-//        cap.setTargetPosition(0);
-//        cap2.setTargetPosition(0);
+
 
 //         cap.setDirection(DcMotor.Direction.REVERSE);
         cap2.setDirection(DcMotor.Direction.REVERSE);
-//        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
 
-        // Load your serialized pipeline
-//        visionPipeline = loadPipeline(); // Implement this method to load your serialized object
         waitForStart();
 
 
