@@ -39,16 +39,16 @@ public class baseAuto extends LinearOpMode {
     private Servo swivel;
     private Servo drone;
 
-//    long time =System.nanoTime();
-ElapsedTime runtime = new ElapsedTime();//.startTime();
+    //    long time =System.nanoTime();
+    ElapsedTime runtime = new ElapsedTime();//.startTime();
 
-//    WebcamName webcam;
+    //    WebcamName webcam;
 //    private VisionProcessor ColorPipeline;
 //ColorPipelineB pipeline =new ColorPipelineB(telemetry);
- private PropDetector pipeline;
-  private VisionPortal visionPortal;
+    private PropDetector pipeline;
+    private VisionPortal visionPortal;
 
-boolean timerun =false;
+    boolean timerun = false;
 
     boolean pointOne = false;
 
@@ -68,25 +68,21 @@ boolean timerun =false;
         right_back = hardwareMap.get(DcMotor.class, "right_back");
 
 
-
-
-
         leftgrab = hardwareMap.get(Servo.class, "leftgrab");
         rightgrab = hardwareMap.get(Servo.class, "rightgrab");
-
 
 
         cap = hardwareMap.get(DcMotor.class, "cap");
         cap2 = hardwareMap.get(DcMotor.class, "cap2");
 
-        arm1= hardwareMap.get(Servo.class, "arm1");
-        arm2= hardwareMap.get(Servo.class, "arm2");
+        arm1 = hardwareMap.get(Servo.class, "arm1");
+        arm2 = hardwareMap.get(Servo.class, "arm2");
 
-        wrist1= hardwareMap.get(Servo.class, "wrist1");
-        wrist2= hardwareMap.get(Servo.class, "wrist2");
+        wrist1 = hardwareMap.get(Servo.class, "wrist1");
+        wrist2 = hardwareMap.get(Servo.class, "wrist2");
 
 
-        swivel= hardwareMap.get(Servo.class, "swivel");
+        swivel = hardwareMap.get(Servo.class, "swivel");
 
         drone = hardwareMap.get(Servo.class, "drone");
 
@@ -112,10 +108,6 @@ boolean timerun =false;
 //        right_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //        left_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //        left_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-
-
-
 
 
         pipeline = new PropDetector();
@@ -147,7 +139,6 @@ boolean timerun =false;
         telemetry.addData("position", pipeline.getSelection());
 
 
-
         telemetry.update();
 //        /*
 //         * Wait for the user to press start on the Driver Station
@@ -162,8 +153,6 @@ boolean timerun =false;
             telemetry.addData("FLMotor", left_drive.getCurrentPosition());
 //            System.out.println(System.nanoTime());
             telemetry.addData("position", pipeline.getSelection());
-
-
 
 
             telemetry.update();
@@ -186,7 +175,6 @@ boolean timerun =false;
         waitForStart();
 
 
-
         while (opModeIsActive())//movement code goes here
         {
 //            if(!timerun){
@@ -202,11 +190,9 @@ boolean timerun =false;
             telemetry.update();
 
 
-
 //                forward();
 //                sleep(6000);
-            if (pipeline.getSelection() ==    PropDetector.Selected.LEFT )
-            {
+            if (pipeline.getSelection() == PropDetector.Selected.LEFT) {
 
 //                System.out.println(runtime.seconds());
 
@@ -258,7 +244,7 @@ boolean timerun =false;
 //                    right_back.setPower(0);
 //                    left_drive.setPower(0);
 //                    right_drive.setPower(0);
-                    //grab();
+                //grab();
 //                    resetEncoder();
 //                    pointOne = true;
 //                }
@@ -271,7 +257,7 @@ boolean timerun =false;
 //                    resetEncoder();
 //                    barDown();
 //
-                }
+            }
 //                telemetry.addData("rMotor", right_back.getCurrentPosition());
 //                telemetry.addData("LMotor", left_back.getCurrentPosition());
 //                telemetry.addData("FrMotor", right_drive.getCurrentPosition());
@@ -280,15 +266,13 @@ boolean timerun =false;
 //                telemetry.update();
 //                Stop();
 //                sleep(60000000);
-            }
+        }
 //
-            if (pipeline.getSelection() ==    PropDetector.Selected.MIDDLE)
-            {
+        if (pipeline.getSelection() == PropDetector.Selected.MIDDLE) {
 
 
-
-                middleLine();
-                sleep(2000);
+            middleLine();
+            sleep(2000);
 //                forward();
 //                sleep(3000);
 //                intake();
@@ -301,8 +285,8 @@ boolean timerun =false;
 //                strafeL();
 //                sleep(4000);
 
-                Stop();
-                sleep(700000);
+            Stop();
+            sleep(700000);
 //                telemetry.addLine("middle");
 //                telemetry.addData("rMotor", right_back.getCurrentPosition());
 //                telemetry.addData("LMotor", left_back.getCurrentPosition());
@@ -319,42 +303,41 @@ boolean timerun =false;
 //               middleLine();
 //               sleep(2000);
 
-            }
-            if (pipeline.getSelection() ==    PropDetector.Selected.RIGHT)
-            {
-                forward();
-                sleep(1000);
-                strafeR();
-                sleep(1000);
-                intake();
-                sleep(500);
+        }
+        if (pipeline.getSelection() == PropDetector.Selected.RIGHT) {
+            forward();
+            sleep(1000);
+            strafeR();
+            sleep(1000);
+            intake();
+            sleep(500);
 
-                back();
-                sleep(2000);
-                armup();
-                sleep(500);
-                strafeL();
-                sleep(4000);
+            back();
+            sleep(2000);
+            armup();
+            sleep(500);
+            strafeL();
+            sleep(4000);
 
-                Stop();
-                sleep(700000);
-                telemetry.addData("rMotor", right_back.getCurrentPosition());
-                telemetry.addData("LMotor", left_back.getCurrentPosition());
-                telemetry.addData("FrMotor", right_drive.getCurrentPosition());
-                telemetry.addData("FLMotor", left_drive.getCurrentPosition());
-                telemetry.addData("position", pipeline.getSelection());
-                telemetry.update();
-                barUp();
-                intake();
-
-
-            }
+            Stop();
+            sleep(700000);
             telemetry.addData("rMotor", right_back.getCurrentPosition());
             telemetry.addData("LMotor", left_back.getCurrentPosition());
             telemetry.addData("FrMotor", right_drive.getCurrentPosition());
             telemetry.addData("FLMotor", left_drive.getCurrentPosition());
             telemetry.addData("position", pipeline.getSelection());
             telemetry.update();
+            barUp();
+            intake();
+
+
+        }
+        telemetry.addData("rMotor", right_back.getCurrentPosition());
+        telemetry.addData("LMotor", left_back.getCurrentPosition());
+        telemetry.addData("FrMotor", right_drive.getCurrentPosition());
+        telemetry.addData("FLMotor", left_drive.getCurrentPosition());
+        telemetry.addData("position", pipeline.getSelection());
+        telemetry.update();
 //          forward();
 //          sleep(1000);
 //          Stop();
@@ -381,7 +364,8 @@ boolean timerun =false;
 //
 //        telemetry.update();
     }
-    public void middleLine(){
+
+    public void middleLine() {
         left_back.setPower(.5);
         right_back.setPower(.5);
         left_drive.setPower(.5);
@@ -400,7 +384,7 @@ boolean timerun =false;
 
     }
 
-    public void LeftLine(){
+    public void LeftLine() {
         left_back.setPower(.5);
         right_back.setPower(.5);
         left_drive.setPower(.5);
@@ -417,7 +401,8 @@ boolean timerun =false;
         right_drive.setTargetPosition(-850);
 
     }
-    public void rightLine(){
+
+    public void rightLine() {
         left_back.setPower(.5);
         right_back.setPower(.5);
         left_drive.setPower(.5);
@@ -432,19 +417,22 @@ boolean timerun =false;
         left_drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         right_drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
-    public void stopEncoder(){
+
+    public void stopEncoder() {
         left_back.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         right_back.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         left_drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         right_drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
-    public void resetEncoder(){
+
+    public void resetEncoder() {
         right_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
-    public void FirstMove(){
+
+    public void FirstMove() {
         left_back.setPower(.5);
         right_back.setPower(.5);
         left_drive.setPower(.5);
@@ -466,6 +454,7 @@ boolean timerun =false;
         right_drive.setPower(0);
 
     }
+
     public void back() {
         left_drive.setPower(0.3);
         right_drive.setPower(-.3);
@@ -476,7 +465,8 @@ boolean timerun =false;
 //        leftgrab.setPosition(0.8);
 //        rightgrab.setPosition(0);
     }
-    public void barHigh(){
+
+    public void barHigh() {
         cap.setPower(.6);
         cap2.setPower(.6);
         cap.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -484,17 +474,19 @@ boolean timerun =false;
         cap.setTargetPosition(1500);
         cap2.setTargetPosition(1490);
     }
-public void barUp() {
 
-    cap.setPower(.6);
-    cap2.setPower(.6);
-    cap.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-    cap2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    public void barUp() {
 
-    cap.setTargetPosition(30);
-    cap2.setTargetPosition(30);
+        cap.setPower(.6);
+        cap2.setPower(.6);
+        cap.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        cap2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-}
+        cap.setTargetPosition(30);
+        cap2.setTargetPosition(30);
+
+    }
+
     public void barDown() {
 
         cap.setPower(.6);
@@ -506,7 +498,8 @@ public void barUp() {
         cap2.setTargetPosition(0);
 
     }
-        public void forward() {
+
+    public void forward() {
         left_drive.setPower(-0.3);
         right_drive.setPower(0.3);
         left_back.setPower(-0.3);
@@ -522,22 +515,27 @@ public void barUp() {
         rightgrab.setPosition(.72);
 //                sleep(100);
     }
+
     public void grab() {
         leftgrab.setPosition(0.28);
         rightgrab.setPosition(.72);
     }
-    public void open(){
+
+    public void open() {
         leftgrab.setPosition(0.42);
         rightgrab.setPosition(0.56);
     }
-public void intake(){
 
-    leftgrab.setPosition(0.42);
-    rightgrab.setPosition(0.56);
-}
-public void outtake(){
+    public void intake() {
 
-}
+        leftgrab.setPosition(0.42);
+        rightgrab.setPosition(0.56);
+    }
+
+    public void outtake() {
+
+    }
+
     public void Stop() {
         left_drive.setPower(0);
         right_drive.setPower(0);
