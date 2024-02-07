@@ -117,45 +117,9 @@ boolean timerun =false;
 
 
 
-//        left_back.setTargetPosition(-850);
-//        right_back.setTargetPosition(850);
-//        left_drive.setTargetPosition(850);
-//        right_drive.setTargetPosition(-850);
+
         pipeline = new PropDetector();
         visionPortal = VisionPortal.easyCreateWithDefaults(hardwareMap.get(WebcamName.class, "webcam"), pipeline);
-//        ColorPipeline ColorPipeline =new ColorPipeline(telemetry);
-//System.nanoTime();
-//        VisionPortal myVisionPortal;
-////        myVisionPortal = VisionPortal.easyCreateWithDefaults(hardwareMap.get(WebcamName.class, "webcam"),pipeline);
-//        myVisionPortal = new VisionPortal.Builder()
-//                .setCamera(hardwareMap.get(WebcamName.class, "webcam"))
-////                .setCamera(BuiltinCameraDirection.FRONT)
-////                .addProcessor(pipeline)
-//                .setCameraResolution(new Size(1280, 960))
-//                .setStreamFormat(VisionPortal.StreamFormat.YUY2)
-////                .enableCameraMonitoring(true)
-//                .setAutoStopLiveView(true)
-//                .build();
-//        myVisionPortal.setProcessorEnabled(pipeline, true);
-
-//        new VisionPortal.Builder()
-//                .addProcessor(pipeline)
-//                .build();
-// Create a VisionPortal, with the specified camera and AprilTag processor, and assign it to a variable.
-//        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-//        webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"), cameraMonitorViewId);
-//
-//        // OR...  Do Not Activate the Camera Monitor View
-//        webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"));
-//
-
-//        /*
-//         * Specify the image processing pipeline we wish to invoke upon receipt
-//         * of a frame from the camera. Note that switching pipelines on-the-fly
-//         * (while a streaming session is in flight) *IS* supported.
-//         */
-//        ColorPipeline myPipeline = new ColorPipeline();
-//        webcam.setPipeline(myPipeline);
 
 
 //        /*
@@ -169,74 +133,29 @@ boolean timerun =false;
 //         */   webcam.setMillisecondsPermissionTimeout(1); // Timeout for obtaining permission is configurable. Set before opening.
 //        webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
 //        {
-//            @Override
-//            public void onOpened() {
 //
-////                /*
-////                 * Tell the webcam to start streaming images to us! Note that you must make sure
-////                 * the resolution you specify is supported by the camera. If it is not, an exception
-////                 * will be thrown.
-////                 *
-////                 * Keep in mind that the SDK's UVC driver (what OpenCvWebcam uses under the hood) only
-////                 * supports streaming from the webcam in the uncompressed YUV image format. This means
-////                 * that the maximum resolution you can stream at and still get up to 30FPS is 480p (640x480).
-////                 * Streaming at e.g. 720p will limit you to up to 10FPS and so on and so forth.
-////                 *
-////                 * Also, we specify the rotation that the webcam is used in. This is so that the image
-////                 * from the camera sensor can be rotated such that it is always displayed with the image upright.
-////                 * For a front facing camera, rotation is defined assuming the user is looking at the screen.
-////                 * For a rear facing camera or a webcam, rotation is defined assuming the camera is facing
-////                 * away from the user.
-////                 */
-////
-////                //    telemetry.addLine("if the robot works then hayden gets a cookie for each match this works and brian get 2 cookies because he is very good at coding");
-//                webcam.startStreaming(1280, 960);
-//            }
-//
-//        telemetry.addData("left", pipeline.leftavgfin);
-//        telemetry.addData("middle", pipeline.midavgfin);
-//        telemetry.addData("right", pipeline.rightavgfin);
-//        telemetry.addData("x", pipeline.location);
-//        telemetry.update();
 //
         left_back.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         right_back.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         left_drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         right_drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-//               @Override
-//            public void onError(int errorCode) {
-//                /*
-//                 * This will be called if the camera could not be opened
-//                 */
-//            }
-//        });
-//        telemetry.addData("left", pipeline.leftavgfin);
-//        telemetry.addData("middle", pipeline.midavgfin);
-//        telemetry.addData("right", pipeline.rightavgfin);
-//        telemetry.addData("x", pipeline.getLocation());
-//        telemetry.update();
+
         telemetry.addData("rMotor", right_back.getCurrentPosition());
         telemetry.addData("LMotor", left_back.getCurrentPosition());
         telemetry.addData("FrMotor", right_drive.getCurrentPosition());
         telemetry.addData("FLMotor", left_drive.getCurrentPosition());
         telemetry.addData("position", pipeline.getSelection());
-//        telemetry.addData("left", pipeline.leftavgfin);
-//        telemetry.addData("middle", pipeline.midavgfin);
-//        telemetry.addData("right", pipeline.rightavgfin);
-//        telemetry.addData("position", pipeline.getLocation());
+
 
 
         telemetry.update();
 //        /*
 //         * Wait for the user to press start on the Driver Station
 //         */
-//        grab();
+//        grab();//IMPORTANT
 //        armup();
         while (!opModeIsActive() && !isStopRequested()) {
-//            telemetry.addData("left", pipeline.leftavgfin);
-//            telemetry.addData("middle", pipeline.midavgfin);
-//            telemetry.addData("right", pipeline.rightavgfin);
-//            telemetry.addData("x", pipeline.getAnalysis());
+
             telemetry.addData("rMotor", right_back.getCurrentPosition());
             telemetry.addData("LMotor", left_back.getCurrentPosition());
             telemetry.addData("FrMotor", right_drive.getCurrentPosition());
