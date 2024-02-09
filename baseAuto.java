@@ -49,7 +49,6 @@ public class baseAuto extends LinearOpMode {
     public void runOpMode() {
 
 
-
         left_drive = hardwareMap.get(DcMotor.class, "left_drive");
         right_drive = hardwareMap.get(DcMotor.class, "right_drive");
         left_back = hardwareMap.get(DcMotor.class, "left_back");
@@ -75,7 +74,7 @@ public class baseAuto extends LinearOpMode {
         drone = hardwareMap.get(Servo.class, "drone");
 
         right_back.setDirection(DcMotor.Direction.REVERSE);
-        right_drive.setDirection(DcMotor.Direction.REVERSE);
+//        right_drive.setDirection(DcMotor.Direction.REVERSE);
 
 
         cap.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -84,15 +83,15 @@ public class baseAuto extends LinearOpMode {
         cap.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         cap2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        left_drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        left_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        right_drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        right_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
         right_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left_drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left_back.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        left_drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        left_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        right_drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        right_back.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         pipeline = new PropDetector();
@@ -147,7 +146,6 @@ public class baseAuto extends LinearOpMode {
 //        webcam.stopStreaming();
 
 
-
 //         cap.setDirection(DcMotor.Direction.REVERSE);
         cap2.setDirection(DcMotor.Direction.REVERSE);
 
@@ -162,6 +160,8 @@ public class baseAuto extends LinearOpMode {
 //                timerun=true;
 ////                runtime.startTime();
 //            }
+//            armup();
+//            intake();
             telemetry.addData("rMotor", right_back.getCurrentPosition());
             telemetry.addData("LMotor", left_back.getCurrentPosition());
             telemetry.addData("FrMotor", right_drive.getCurrentPosition());
@@ -176,175 +176,57 @@ public class baseAuto extends LinearOpMode {
 
 //                System.out.println(runtime.seconds());
 
-
-                forward();
+//strafeL();
+//sleep(1000);
+                FirstMove();
                 sleep(2000);
-                strafeL();
-                sleep(500);
-                intake();
-                sleep(600);
-
-                back();
-                sleep(2000);
-                armup();
-                sleep(500);
-                strafeL();
+                LeftLine();
                 sleep(4000);
-
                 Stop();
                 sleep(700000);
-//                FirstMove();
-//                sleep(2000);
-//                Stop();
-//                sleep(500);
-//                resetEncoder();
-//                sleep(400);
-//                LeftLine();
-//                sleep(1000);
-//                Stop();
-//                sleep(5000000);
-//                if(runtime.seconds()>0 && runtime.seconds()<6){
-//                    left_back.setPower(.5);
-//                    right_back.setPower(.5);
-//                    right_drive.setPower(-.5);
-//                    left_drive.setPower(.5);
-//
-//
-//                    left_back.setTargetPosition(-1200);
-//                    right_back.setTargetPosition(-1200);
-//                    right_drive.setTargetPosition(-1200);
-//                    left_drive.setTargetPosition(-1200);
-//
-//                    left_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//                    right_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//                    right_drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//                    left_drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-//                    left_back.setPower(0);
-//                    right_back.setPower(0);
-//                    left_drive.setPower(0);
-//                    right_drive.setPower(0);
-                //grab();
-//                    resetEncoder();
-//                    pointOne = true;
-//                }
-//                if(runtime.seconds()>6 && runtime.seconds()<10){
-//                    Stop();
-//                }
-//                if(runtime.seconds()>5 && runtime.seconds()<8){
-//
-//                    LeftLine();
-//                    resetEncoder();
-//                    barDown();
 //
             }
-//                telemetry.addData("rMotor", right_back.getCurrentPosition());
-//                telemetry.addData("LMotor", left_back.getCurrentPosition());
-//                telemetry.addData("FrMotor", right_drive.getCurrentPosition());
-//                telemetry.addData("FLMotor", left_drive.getCurrentPosition());
-//                telemetry.addData("position", pipeline.getSelection());
-//                telemetry.update();
-//                Stop();
-//                sleep(60000000);
-        }
 //
-        if (pipeline.getSelection() == PropDetector.Selected.MIDDLE) {
 
-
-            middleLine();
-            sleep(2000);
-//                forward();
-//                sleep(3000);
-//                intake();
-//                sleep(800);
 //
-//                back();
-//                sleep(2000);
-//                armup();
-//                sleep(500);
-//                strafeL();
-//                sleep(4000);
-
-            Stop();
-            sleep(700000);
-//                telemetry.addLine("middle");
-//                telemetry.addData("rMotor", right_back.getCurrentPosition());
-//                telemetry.addData("LMotor", left_back.getCurrentPosition());
-//                telemetry.addData("FrMotor", right_drive.getCurrentPosition());
-//                telemetry.addData("FLMotor", left_drive.getCurrentPosition());
-//                telemetry.addData("position", pipeline.getSelection());
-//                telemetry.update();
-//                barUp();
-////                sleep(500);
-//                intake();
-////                sleep(800);
+            if (pipeline.getSelection() == PropDetector.Selected.MIDDLE) {
 
 
-//               middleLine();
-//               sleep(2000);
+                middleLine();
+                sleep(2000);
+                Stop();
+                sleep(700000);
 
-        }
-        if (pipeline.getSelection() == PropDetector.Selected.RIGHT) {
-            forward();
-            sleep(1000);
-            strafeR();
-            sleep(1000);
-            intake();
-            sleep(500);
 
-            back();
-            sleep(2000);
-            armup();
-            sleep(500);
-            strafeL();
-            sleep(4000);
+            }
 
-            Stop();
-            sleep(700000);
+            if (pipeline.getSelection() == PropDetector.Selected.RIGHT) {
+                strafeR();
+                sleep(1000);
+                FirstMove();
+                sleep(2000);
+                rightLine();
+                sleep(4000);
+                Stop();
+                sleep(700000);
+                telemetry.addData("rMotor", right_back.getCurrentPosition());
+                telemetry.addData("LMotor", left_back.getCurrentPosition());
+                telemetry.addData("FrMotor", right_drive.getCurrentPosition());
+                telemetry.addData("FLMotor", left_drive.getCurrentPosition());
+                telemetry.addData("position", pipeline.getSelection());
+                telemetry.update();
+
+
+            }
             telemetry.addData("rMotor", right_back.getCurrentPosition());
             telemetry.addData("LMotor", left_back.getCurrentPosition());
             telemetry.addData("FrMotor", right_drive.getCurrentPosition());
             telemetry.addData("FLMotor", left_drive.getCurrentPosition());
             telemetry.addData("position", pipeline.getSelection());
             telemetry.update();
-            barUp();
-            intake();
-
-
+//
         }
-        telemetry.addData("rMotor", right_back.getCurrentPosition());
-        telemetry.addData("LMotor", left_back.getCurrentPosition());
-        telemetry.addData("FrMotor", right_drive.getCurrentPosition());
-        telemetry.addData("FLMotor", left_drive.getCurrentPosition());
-        telemetry.addData("position", pipeline.getSelection());
-        telemetry.update();
-//          forward();
-//          sleep(1000);
-//          Stop();
-//          sleep(1000);
-//          back();
-//          sleep(500);
-//          Stop();
-//          sleep(500);
-//           strafeL();
-//           sleep(1000);
-//           Stop();
-//           sleep(400000);
-//telemetry.addData("location" location);
-//            if (location =)
-//
-//            telemetry.addData("rMotor", right_back.getCurrentPosition());
-//            telemetry.addData("LMotor", left_back.getCurrentPosition());
-//
-//            telemetry.update();
-//        }
-//
-//        telemetry.addData("rMotor", right_back.getCurrentPosition());
-//        telemetry.addData("LMotor", left_back.getCurrentPosition());
-//
-//        telemetry.update();
     }
-
     public void middleLine() {
         left_back.setPower(.5);
         right_back.setPower(.5);
@@ -378,7 +260,7 @@ public class baseAuto extends LinearOpMode {
         left_back.setTargetPosition(-850);
         right_back.setTargetPosition(850);
         left_drive.setTargetPosition(850);
-        right_drive.setTargetPosition(-850);
+        right_drive.setTargetPosition(850);
 
     }
 
@@ -388,7 +270,7 @@ public class baseAuto extends LinearOpMode {
         left_drive.setPower(.5);
         right_drive.setPower(.5);
 
-        left_back.setTargetPosition(1450);
+        left_back.setTargetPosition(-1450);
         right_back.setTargetPosition(-1450);
         left_drive.setTargetPosition(-1450);
         right_drive.setTargetPosition(1450);
@@ -418,20 +300,15 @@ public class baseAuto extends LinearOpMode {
         left_drive.setPower(.5);
         right_drive.setPower(.5);
 
-        left_back.setTargetPosition(-1200);
-        right_back.setTargetPosition(-1200);
-        left_drive.setTargetPosition(-1200);
-        right_drive.setTargetPosition(-1200);
-
         left_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         right_back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         left_drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         right_drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        left_back.setPower(0);
-        right_back.setPower(0);
-        left_drive.setPower(0);
-        right_drive.setPower(0);
+        left_back.setTargetPosition(-1050);
+        right_back.setTargetPosition(-1050);
+        left_drive.setTargetPosition(-1050);
+        right_drive.setTargetPosition(1050);
 
     }
 
@@ -551,8 +428,8 @@ public class baseAuto extends LinearOpMode {
 
     public void strafeR() {
         left_drive.setPower(-0.3);
-        right_drive.setPower(0.3);
-        left_back.setPower(-0.3);
+        right_drive.setPower(-0.3);
+        left_back.setPower(0.3);
         right_back.setPower(-0.3);
 
 
@@ -562,10 +439,10 @@ public class baseAuto extends LinearOpMode {
 
     public void strafeL() {
         //forward
-        left_drive.setPower(-0.3);
+        left_drive.setPower(0.3);
         right_drive.setPower(0.3);
         left_back.setPower(-0.3);
-        right_back.setPower(-0.3);
+        right_back.setPower(0.3);
 
     }
 
