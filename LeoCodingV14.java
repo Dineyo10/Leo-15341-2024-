@@ -21,8 +21,8 @@ public class LeoCodingV14 extends LinearOpMode {
     private Servo wrist1;
     private Servo wrist2;
     private Servo drone;
-    boolean arm = true;
-    float height;
+//    boolean arm = true;
+//    float height;
 
     @Override
     public void runOpMode() {
@@ -98,14 +98,14 @@ public class LeoCodingV14 extends LinearOpMode {
 
 //drone
 //fire
-            if (gamepad2.right_stick_button) {
-                drone.setPosition(0.7);
-            }
-
-//ready
-            if (gamepad2.left_stick_button) {
-                drone.setPosition(1);
-            }
+//            if (gamepad2.right_stick_button) {
+//                drone.setPosition(0.7);
+//            }
+//
+////ready
+//            if (gamepad2.left_stick_button) {
+//                drone.setPosition(1);
+//            }
 
             //grab
             //grabbing
@@ -282,13 +282,13 @@ public class LeoCodingV14 extends LinearOpMode {
             telemetry.addData("RCap", cap.getCurrentPosition());
             telemetry.addData("Lcap2", cap2.getCurrentPosition());
 
-            telemetry.addData("height", height);
+//            telemetry.addData("height", height);
             telemetry.addData("rMotor", right_back.getCurrentPosition());
             telemetry.addData("LMotor", left_back.getCurrentPosition());
 
             telemetry.addData("FrMotor", right_drive.getCurrentPosition());
             telemetry.addData("FLMotor", left_drive.getCurrentPosition());
-            telemetry.addData("arm", arm);
+//            telemetry.addData("arm", arm);
             telemetry.update();
 
         }
